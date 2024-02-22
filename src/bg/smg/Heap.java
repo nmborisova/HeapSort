@@ -1,14 +1,18 @@
 package bg.smg;
 
+import java.util.ArrayList;
+
 public class Heap <E extends Comparable<E>> {
-	private java.util.ArrayList<E> list = new java.util.ArrayList<>();
+	private ArrayList<E> list;
 	
 	/** Create a default heap */
 	 public Heap() {
+		  list = new ArrayList<>();
 	 }
 	 
 	 /** Create a heap from an array of objects */
 	 public Heap(E[] objects) {
+		 this();
 		 for (int i = 0; i < objects.length; i++)
 			 add(objects[i]);
 	 }
@@ -49,6 +53,7 @@ public class Heap <E extends Comparable<E>> {
 		 		// Find the maximum between two children
 		 		if (leftChildIndex >= list.size()) break; // The tree is a heap
 		 		int maxIndex = leftChildIndex;
+				 //left is the maximum unless there is a right child and it is >=left in which case the right becomes the max
 		 		if (rightChildIndex < list.size()) {
 		 			if (list.get(maxIndex).compareTo(list.get(rightChildIndex)) < 0) {
 		 				maxIndex = rightChildIndex;
@@ -72,6 +77,6 @@ public class Heap <E extends Comparable<E>> {
 	 /** Get the number of nodes in the tree */
 	 public int getSize() {
 		 return list.size();
-	}
+	 }
 
 }
